@@ -24,12 +24,3 @@ fi
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-curl https://mise.run | sh
-echo "eval \"\$(/users/$user/.local/bin/mise activate bash)\"" >> ~/.bashrc
-
-/users/$user/.local/bin/mise activate bash
-mise settings set experimental true
-mise use -g java@temurin-8 maven@3 ant@latest python@2 cargo:cargo-binstall
-mise use -g cargo:zellij

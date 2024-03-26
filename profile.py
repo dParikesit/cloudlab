@@ -34,10 +34,6 @@ imageList = [
     # ('"urn:publicid:IDN+utah.cloudlab.us+image+silentfailure-PG0:t2c-eval"','t2c-eval')
 ]
 
-pc.defineParameter("uname",  "Mandatory user name for startup script",
-                   portal.ParameterType.STRING, "dimas",
-                   longDescription="default: dimas")
-
 pc.defineParameter("osImage", "Select OS image",
                    portal.ParameterType.IMAGE,
                    imageList[0], imageList,
@@ -140,7 +136,7 @@ for i in range(params.nodeCount):
         shell="bash", command="sudo mv /local/cloudlab-main /local/scripts"))
     node.addService(pg.Execute(
         shell="bash",
-        command="sudo -u " + params.uname + " /local/scripts/startup.sh &>> /local/logs/startup.log"))
+        command="sudo /local/scripts/startup.sh &>> /local/logs/startup.log"))
     if params.osImage and params.osImage != "default":
         node.disk_image = params.osImage
         pass
