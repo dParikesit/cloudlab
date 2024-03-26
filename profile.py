@@ -138,9 +138,10 @@ for i in range(params.nodeCount):
         path='/local'))
     node.addService(pg.Execute(
         shell="bash", command="sudo mv /local/cloudlab-main /local/scripts"))
+    cmd = f"sudo -u {params.uname} /local/scripts/startup.sh &>> /local/logs/startup.log"
     node.addService(pg.Execute(
         shell="bash",
-        command=f"""sudo -u {params.uname} /local/scripts/startup.sh &>> /local/logs/startup.log"""))
+        command=cmd))
     if params.osImage and params.osImage != "default":
         node.disk_image = params.osImage
         pass
