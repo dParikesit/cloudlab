@@ -138,7 +138,7 @@ for i in range(params.nodeCount):
         path='/local'))
     node.addService(pg.Execute(
         shell="bash", command="sudo mv /local/cloudlab-main /local/scripts"))
-    cmd = f"sudo -u {params.uname} /local/scripts/startup.sh &>> /local/logs/startup.log"
+    cmd = "sudo -u " + params.uname + " /local/scripts/startup.sh &>> /local/logs/startup.log"
     node.addService(pg.Execute(
         shell="bash",
         command=cmd))
