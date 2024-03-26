@@ -34,6 +34,8 @@ imageList = [
     # ('"urn:publicid:IDN+utah.cloudlab.us+image+silentfailure-PG0:t2c-eval"','t2c-eval')
 ]
 
+nodes = []
+
 pc.defineParameter("osImage", "Select OS image",
                    portal.ParameterType.IMAGE,
                    imageList[0], imageList,
@@ -129,14 +131,7 @@ for i in range(params.nodeCount):
     # Create a node and add it to the request
     name = "node" + str(i)
     node = request.RawPC(name)
-    node.addService(pg.Install(
-        url="https://github.com/dParikesit/cloudlab/archive/master.tar.gz",
-        path='/local'))
-    node.addService(pg.Execute(
-        shell="bash", command="sudo mv /local/cloudlab-main /local/scripts"))
-    node.addService(pg.Execute(
-        shell="bash",
-        command="sudo /local/scripts/startup.sh &>> /local/logs/startup.log"))
+    nodes.append(node)
     if params.osImage and params.osImage != "default":
         node.disk_image = params.osImage
         pass
@@ -159,6 +154,16 @@ for i in range(params.nodeCount):
             pass
         bs.placement = "any"
         pass
+
+for node in nodes:
+    node.addService(pg.Install(
+        url="https://github.com/dParikesit/cloudlab/archive/master.tar.gz",
+        path='/local'))
+    node.addService(pg.Execute(
+        shell="bash", command="sudo mv /local/cloudlab-main /local/scripts"))
+    node.addService(pg.Execute(
+        shell="bash",
+        command="sudo /local/scripts/startup.sh &>> /local/logs/startup.log"))
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
