@@ -138,10 +138,9 @@ for i in range(params.nodeCount):
         path='/local'))
     node.addService(pg.Execute(
         shell="bash", command="sudo mv /local/cloudlab-main /local/scripts"))
-    cmd = "sudo -u " + params.uname + " /local/scripts/startup.sh &>> /local/logs/startup.log"
     node.addService(pg.Execute(
         shell="bash",
-        command=cmd))
+        command="sudo -u " + params.uname + " /local/scripts/startup.sh &>> /local/logs/startup.log"))
     if params.osImage and params.osImage != "default":
         node.disk_image = params.osImage
         pass
@@ -164,16 +163,6 @@ for i in range(params.nodeCount):
             pass
         bs.placement = "any"
         pass
-    #
-    # Install and start X11 VNC. Calling this informs the Portal that you want a VNC
-    # option in the node context menu to create a browser VNC client.
-    #
-    # If you prefer to start the VNC server yourself (on port 5901) then add nostart=True. 
-    #
-    if params.startVNC:
-        node.startVNC()
-        pass
-    pass
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
