@@ -7,7 +7,9 @@ curl https://mise.run | sh
 echo "eval \"\$(/users/$user/.local/bin/mise activate bash)\"" >> ~/.bashrc
 
 ~/.local/bin/mise settings set experimental true
-~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest python@2 cargo:cargo-binstall
+~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest
+~/.local/bin/mise -y use -g python@2
+~/.local/bin/mise -y use -g cargo:cargo-binstall
 exit
 
 # ~/.local/bin/mise -y use -g cargo:cargo-binstall
