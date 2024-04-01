@@ -11,10 +11,14 @@ echo "eval \"\$(/users/$user/.local/bin/mise activate bash)\"" >> ~/.bashrc
 ~/.local/bin/mise -y use -g python@2
 
 git config --global credential.helper 'store'
-git -C ~ clone https://github.com/apache/zookeeper.git
+# git -C ~ clone https://github.com/apache/zookeeper.git
+git -C ~ clone https://github.com/dParikesit/zookeeper.git
 git -C ~ clone https://github.com/apache/cassandra.git
 git -C ~ clone https://github.com/apache/hadoop.git
 git -C ~ clone https://github.com/apache/hbase.git
+
+cd ~/zookeeper
+git checkout newbug
 exit
 
 # mise use -g cargo:cargo-binstall
