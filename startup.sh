@@ -31,13 +31,17 @@ sudo sh -c 'echo 1 > /proc/sys/kernel/perf_event_paranoid'
 sudo sh -c 'echo 0 > /proc/sys/kernel/kptr_restrict'
 
 wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-tar xzvf apache-maven-3.9.6-bin.tar.gz
-
 wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.14-bin.tar.gz
+tar xzvf apache-maven-3.9.6-bin.tar.gz
 tar xzvf apache-ant-1.10.14-bin.tar.gz
-
 sudo mv apache-maven-3.9.6 /opt
 sudo mv apache-ant-1.10.14 /opt
+
+sudo mkdir -p /etc/profile.d
+sudo touch /etc/profile.d/java.sh
+echo "PATH=$PATH:/opt/apache-maven-3.9.6/bin:/opt/apache-ant-1.10.14/bin" | sudo dd of=/etc/profile.d/java.sh oflag=append conv=notrunc
+echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))" | sudo dd of=/etc/profile.d/java.sh oflag=append conv=notrunc
+echo "ANT_HOME=/opt/apache-ant-1.10.14"
 
 # sudo apt install fzf -y
 
