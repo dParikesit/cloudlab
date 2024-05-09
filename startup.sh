@@ -41,7 +41,7 @@ sudo mkdir -p /etc/profile.d
 sudo touch /etc/profile.d/java.sh
 echo "PATH=$PATH:/opt/apache-maven-3.9.6/bin:/opt/apache-ant-1.10.14/bin" | sudo dd of=/etc/profile.d/java.sh oflag=append conv=notrunc
 echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))" | sudo dd of=/etc/profile.d/java.sh oflag=append conv=notrunc
-echo "ANT_HOME=/opt/apache-ant-1.10.14"
+echo "ANT_HOME=/opt/apache-ant-1.10.14" | sudo dd of=/etc/profile.d/java.sh oflag=append conv=notrunc
 
 # sudo apt install fzf -y
 
