@@ -24,3 +24,24 @@ fi
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
+
+sudo apt install -y openjdk-8-jdk openjdk-8-dbg
+
+sudo sh -c 'echo 1 > /proc/sys/kernel/perf_event_paranoid'
+sudo sh -c 'echo 0 > /proc/sys/kernel/kptr_restrict'
+
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+tar xzvf apache-maven-3.9.6-bin.tar.gz
+
+wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.14-bin.tar.gz
+tar xzvf apache-ant-1.10.14-bin.tar.gz
+
+sudo mv apache-maven-3.9.6 /opt
+sudo mv apache-ant-1.10.14 /opt
+
+# sudo apt install fzf -y
+
+# git clone https://github.com/eth-p/bat-extras.git
+# cd bat-extras
+# ./build.sh --install
+
