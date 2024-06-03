@@ -23,8 +23,20 @@ git -C ~ clone https://github.com/apache/hbase.git
 cd ~/zookeeper
 git checkout newbug
 
-echo "alias du='dust -r'" >> ~/.bash_aliases
-echo "alias df='duf'" >> ~/.bash_aliases
+echo alias ntfyshort="curl "https://ntfy.tester.lol/research?auth=QmVhcmVyIHRrX3QzaDl2ZWV4bHk4cHFvMWxhN3A5b2VlNjhoZjBi" -d " >> ~/.bash_aliases
+
+tee -a ~/.bash_aliases > /dev/null <<EOF
+ntfy(){
+  time_start=\$(date +%s)
+  "\$@"
+  time_end=\$(date +%s)
+  diff=\$((\$time_end-\$time_start))
+  curl -u :tk_t3h9veexly8pqo1la7p9oee68hf0b -d "'\$*' finished in \`date -u -d "@\${diff}" +%T\`" https://ntfy.tester.lol/research
+}
+EOF
+
+# echo "alias du='dust -r'" >> ~/.bash_aliases
+# echo "alias df='duf'" >> ~/.bash_aliases
 
 # mise use -g cargo:cargo-binstall 
 # mise use -g cargo:zellij cargo:dust go:github.com/muesli/duf.git
