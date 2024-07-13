@@ -2,14 +2,12 @@
 
 user=`whoami`
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-curl https://mise.run | sh
-echo "eval \"\$(${HOME}/.local/bin/mise activate bash)\"" >> ~/.bashrc
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
-~/.local/bin/mise settings set experimental true
-~/.local/bin/mise -y use -g python@2 go@latest
 
-~/.local/bin/mise use -g cargo:cargo-binstall
+# nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+# nix-channel --update
 
 # ~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest
 
@@ -34,9 +32,3 @@ ntfy(){
   curl -u :tk_t3h9veexly8pqo1la7p9oee68hf0b -d "'\$*' finished in \`date -u -d "@\${diff}" +%T\`" https://ntfy.tester.lol/research
 }
 EOF
-
-# echo "alias du='dust -r'" >> ~/.bash_aliases
-# echo "alias df='duf'" >> ~/.bash_aliases
-
-# mise use -g cargo:cargo-binstall 
-# mise use -g cargo:zellij cargo:dust go:github.com/muesli/duf.git
