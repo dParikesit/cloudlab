@@ -23,7 +23,7 @@ git -C ~ clone https://github.com/apache/hbase.git
 cd ~/zookeeper
 git checkout newbug
 
-echo alias ntfyshort="curl "https://ntfy.tester.lol/research?auth=QmVhcmVyIHRrX3QzaDl2ZWV4bHk4cHFvMWxhN3A5b2VlNjhoZjBi" -d " >> ~/.bash_aliases
+echo alias ntfyshort="\"curl "https://ntfy.tester.lol/research?auth=QmVhcmVyIHRrX3QzaDl2ZWV4bHk4cHFvMWxhN3A5b2VlNjhoZjBi" -d \"" >> ~/.bash_aliases
 
 tee -a ~/.bash_aliases > /dev/null <<EOF
 ntfy(){
