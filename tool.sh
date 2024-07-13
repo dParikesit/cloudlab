@@ -5,9 +5,13 @@ user=`whoami`
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
+# remove /etc/bash.bashrc
 
-# nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+# nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
 # nix-channel --update
+
+# nix run home-manager/release-24.05 -- init --switch
+
 
 # ~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest
 
