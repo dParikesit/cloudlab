@@ -11,7 +11,7 @@ rm ./nix-installer.sh
 
 # remove /etc/bash.bashrc
 
-git clone -C ~ https://github.com/dParikesit/dotfiles.git
+git -C ~ clone https://github.com/dParikesit/dotfiles.git
 nix run home-manager/release-24.05 -- init --switch ~/dotfiles/cloudlab
 home-manager switch --flake ~/dotfiles/cloudlab/
 
