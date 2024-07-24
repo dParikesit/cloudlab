@@ -13,6 +13,7 @@ rm ./nix-installer.sh
 
 git clone -C ~ https://github.com/dParikesit/dotfiles.git
 nix run home-manager/release-24.05 -- init --switch ~/dotfiles/cloudlab
+home-manager switch --flake ~/dotfiles/cloudlab/
 
 
 # ~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest
