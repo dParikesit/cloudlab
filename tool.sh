@@ -9,6 +9,11 @@ chmod +x nix-installer.sh
 rm ./nix-installer.sh
 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
+curl https://mise.run | sh
+echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
 # remove /etc/bash.bashrc
 
 git -C ~ clone https://github.com/dParikesit/dotfiles.git
