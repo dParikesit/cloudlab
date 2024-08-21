@@ -24,14 +24,14 @@ home-manager switch --flake ~/dotfiles/cloudlab/
 # ~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest
 
 git config --global credential.helper 'store'
-# git -C ~ clone https://github.com/apache/zookeeper.git
-git -C ~ clone https://github.com/dParikesit/zookeeper.git
+git -C ~ clone https://github.com/apache/zookeeper.git
+# git -C ~ clone https://github.com/dParikesit/zookeeper.git
 git -C ~ clone https://github.com/apache/cassandra.git
 git -C ~ clone https://github.com/apache/hadoop.git
 git -C ~ clone https://github.com/apache/hbase.git
 
 cd ~/zookeeper
-git checkout newbug
+git checkout tags/release-3.11.4
 
 echo alias ntfyshort="\"curl "https://ntfy.tester.lol/research?auth=QmVhcmVyIHRrX3QzaDl2ZWV4bHk4cHFvMWxhN3A5b2VlNjhoZjBi" -d \"" >> ~/.bash_aliases
 
