@@ -31,7 +31,7 @@ git -C ~ clone https://github.com/apache/hadoop.git
 git -C ~ clone https://github.com/apache/hbase.git
 
 cd ~/zookeeper
-git checkout tags/release-3.11.4
+git checkout tags/release-3.4.11
 
 echo alias ntfyshort="\"curl "https://ntfy.tester.lol/research?auth=QmVhcmVyIHRrX3QzaDl2ZWV4bHk4cHFvMWxhN3A5b2VlNjhoZjBi" -d \"" >> ~/.bash_aliases
 
