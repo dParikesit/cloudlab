@@ -23,7 +23,7 @@ home-manager switch --flake ~/dotfiles/cloudlab/
 
 # ~/.local/bin/mise -y use -g java@temurin-8 maven@3 ant@latest
 
-git config --global credential.helper 'store'
+sudo git config --global credential.helper store
 git -C ~ clone https://github.com/apache/zookeeper.git
 # git -C ~ clone https://github.com/dParikesit/zookeeper.git
 git -C ~ clone https://github.com/apache/cassandra.git
