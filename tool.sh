@@ -30,17 +30,22 @@ git -C ~ clone https://github.com/apache/cassandra.git
 git -C ~ clone https://github.com/apache/hadoop.git
 git -C ~ clone https://github.com/apache/hbase.git
 
+git -C ~ clone https://github.com/OrderLab/OKLib.git
+
 cd ~/zookeeper
 git checkout tags/release-3.4.11
 
-echo alias ntfyshort="\"curl "https://ntfy.tester.lol/research?auth=QmVhcmVyIHRrX3QzaDl2ZWV4bHk4cHFvMWxhN3A5b2VlNjhoZjBi" -d \"" >> ~/.bash_aliases
+cd ~/cassandra
+git checkout tags/cassandra-3.11.5
+
+cd ~/hadoop
+git checkout tags/rel/release-3.2.2
+
+cd ~/hbase
+git checkout tags/rel/2.4.0
 
 tee -a ~/.bash_aliases > /dev/null <<EOF
 ntfy(){
-  time_start=\$(date +%s)
-  "\$@"
-  time_end=\$(date +%s)
-  diff=\$((\$time_end-\$time_start))
-  curl -u :tk_t3h9veexly8pqo1la7p9oee68hf0b -d "'\$*' finished in \`date -u -d "@\${diff}" +%T\`" https://ntfy.tester.lol/research
+  curl -u :tk_ue81cput60a99oxonvysoue9rvkdb -d "$(hostname) '$@'" https://ntfy.tester.lol/research
 }
 EOF
